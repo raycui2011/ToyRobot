@@ -1,0 +1,8 @@
+com/rea/robot/simulator/CommandProcessor.class
+com/rea/robot/simulator/SquareTable.class
+com/rea/robot/simulator/Board.class
+com/rea/robot/simulator/Location.class
+com/rea/robot/simulator/Direction.class
+com/rea/robot/RunRobot.class
+com/rea/robot/exceptions/ToyRobotException.class
+com/rea/robot/simulator/ToyRobot.class

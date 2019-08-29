@@ -1,0 +1,382 @@
+CommandProcessorTest.java
+	Title: test the application when the robot is not placed.
+	Description: Application should can catch the exception when ToyRobot is not placed, and run the command ‘LEFT’, ‘RIGHT’, ‘MOVE’, ‘PLACE’. If hit the ‘EXIT’ command, should exit the application.
+	Test Steps:	
+		1)  initialise an instance of SquareTable with x =5, y=5
+		2)  initialise an instance of CommandProcessor by passing the instance of the SquaretTable
+		3) Invoke the executeCommand method in CommandProcessor by passing the following string parameter ’LEFT’, ‘RIGHT’, ‘MOVE’, ‘REPORT’ .
+		4)  And then invoke executeCommand method with the string ‘exit’ as paramter, check isCommandsFinished is changed to true or not.
+	Expected Result:
+	For these case ’LEFT’, ‘RIGHT’, ‘MOVE’, ‘REPORT’ , ToyRobotException will be thrown with the message is ‘Cannot process any commands until the robot has been PLACED.’.
+	For EXIT’ , isCommandsFinished should equal true
+
+	Title: test the executeCommand method in CommandProcessor.java
+	Description: Application should can execute the command line, report the ToyRob ’s position.
+	Test Steps:
+		1)  initialise an instance of SquareTable with x =5, y=5.
+		2)  initialise an instance of CommandProcessor by passing the instance of the SquaretTable.
+		3) Invoke executeCommand method in CommandProcessor by given String ‘Place 1,2, North’.
+		4) Invoke executeCommand method in CommandProcessor by given String ‘Right’,
+		5) Invoke executeCommand method in CommandProcessor by given String ‘Move’
+		6) check the ToyRobot’s position is 2,2 or not
+		7) check the ToyRobot’s direction is EAST or not
+		8) check the value of isCommandsFinished equal false.
+		9) Invoke executeCommand method in CommandProcessor by given String ‘EXIT’,
+		10) check the value of isCommandsFinished equal true. 
+	Expected Result:
+		At step6 expected result should be true, at step7 expected result should be true, at step8 expected result should be true, at step9 expected should be true.
+
+DirectionTest.java
+	
+	Title: Test the direction’s degrees.
+	Description Direction class should have the correct matching with degrees to direction.
+	Test Steps:
+		1) Check the value of degrees matching with NORTH equal 0 or not
+		2) Check the value of degrees matching with EAST equal 90 or not.
+		3) check the value of degrees matching with SOUTH equal 180 or not.
+		4) check the value of degrees matching with WEST equal 270 or not.
+		5) check the getDegrees method return the correct degrees for SOUTH.
+		6) check the getDegrees method return the correct degrees for NORTH.
+		7) check the getDegrees method return the correct degrees for EAST.
+		8) check the getDegrees method return the correct degrees for WEST.
+	Expected Result:
+		1) expected result is true.
+		2) expected result is true.
+		3) expected result is true.
+		4) expected result is true.
+		5) expected result is true.
+		6) expected result is true.
+		7) expected result is true.
+		8) expected result is true.
+
+LocationTest.java
+	Title: Test changePosition method
+	
+	Description:
+		This test is used to check changePosition method can return an instance of the Location with the correct x and y.
+	Test Steps:
+		1) Create an instance of Location location with given x=1,y=2.
+		2) Check location.getXValue() equal 1.
+		3) Check location.getYValue() equal 2.
+		4) Create second instance of Location secLocation with given x=3, y=5.
+		5) Check secLocationwith.getXValue() equal 3.
+		6) Check secLocationwith.getYValue() equal 5.
+		7) Invoke the changePosition method passing the secLocation object, this function will return another instance of Location addedLocation.
+		8) Check location.getXValue() equal 1.
+		9) Check location.getYValue() equal 2.
+		10) Check secLocationwith.getXValue() equal 3.
+		11) Check secLocationwith.getYValue() equal 5.
+		12) Check addedLocation.getXValue() equal 4.
+		13) Check addedLocation.getYValue() equal 7.
+
+	Expected Result:
+	1) at step 2 expected true.
+	2) at step 3 expected true.
+	3) at step 5 expected true.
+	4) at step 6 expected true.
+	5) at step 8 expected true.
+	6) at step 9 expected true.
+	7) at step 10 expected true.
+	8) at step 11 expected true.
+	9) at step 12 expected true.
+	10) at step 13 expected true.
+
+SquareTableTest.java
+	Title: Test SquareTable object
+	
+	Description: Main purpose is check the isCoordinateWithinBounds method can work as expected.
+	
+	Test Steps:
+	
+	1) Create a instance of SquareTable , SquareTable boundary = new SquareTable(4,4) .
+	2) Invoke isCoordinateWithinBounds method by given Location(0, 0), check this location is in the bound.
+	3) Invoke isCoordinateWithinBounds method by given Location(-1, 0), check this location is not in the bound.
+	4) Invoke isCoordinateWithinBounds method by given Location(0, -2), check this location is not in the bound.
+	5) Invoke isCoordinateWithinBounds method by given Location(3, 0), check this location is in the bound.
+	6) Invoke isCoordinateWithinBounds method by given Location(0, 4), check this location is in the bound.
+	7) Invoke isCoordinateWithinBounds method by given Location(-2, 0), check this location is not in the bound.
+	8) Invoke isCoordinateWithinBounds method by given Location(0, -3), check this location is not in the bound.
+	9) Invoke isCoordinateWithinBounds method by given Location(4, 0), check this location is in the bound.
+	10) Invoke isCoordinateWithinBounds method by given Location(0, 5), check this location is not in the bound.
+
+ToyRobotTest.java
+	
+	Title: Test the rotateLeft method
+	
+	Description: The rotateLeft method should work correctly.
+	
+	Test Steps:
+	
+	 First of all create an instance of new SquareTable ,	
+	 by SquareTable table = new SquareTable(5,5) and create an instance of ToyRobot by
+	 Location  testRobot = new ToyRobot(new Location(0, 0), Direction.NORTH, table);
+
+	1) After invoking testRobot.getFacingDirection(), check the ToyRob’s direction equal Direction.NORTH.
+	2) After invoking testRobot.roateLeft().getFacingDirection(), check the ToyRob’s direction equal Direction.WEST.
+	3)After invoking testRobot.roateLeft().getFacingDirection(), check the ToyRob’s direction equal Direction.SOUTH.
+	4)After invoking testRobot.roateLeft().getFacingDirection(), check the ToyRob’s direction equal Direction.EAST.
+	5)After invoking testRobot.roateLeft().getFacingDirection(), check the ToyRob’s direction equal Direction.NORTH.
+	6)After invoking testRobot.roateLeft().getFacingDirection(), check the ToyRob’s direction equal Direction.WEST.
+	
+	Expected Result:
+	
+	1) expected true.
+	2) expected true.
+	3) expected true.
+	4) expected true.
+	5) expected true.
+	6) expected true.
+
+
+	Title: Test the roateRight method
+	
+	Description: The rotateRight method should work correctly.
+	
+	Test Steps:
+
+	 First of all create an instance of new SquareTable ,	
+	 by SquareTable table = new SquareTable(5,5) and create an instance of ToyRobot by
+	 Location  testRobot = new ToyRobot(new Location(0, 0), Direction.NORTH, table);
+
+	1) After invoking testRobot.getFacingDirection(), check the ToyRob’s direction equal Direction.NORTH.
+	2) After invoking testRobot.rotateRight().getFacingDirection(), check the ToyRob’s direction equal Direction.EAST.
+	3) After invoking testRobot.rotateRight().getFacingDirection(), check the ToyRob’s direction equal Direction.SOUTH.
+	4) After invoking testRobot.rotateRight().getFacingDirection(), check the ToyRob’s direction equal Direction.WEST.
+	5) After invoking testRobot.rotateRight().getFacingDirection(), check the ToyRob’s direction equal Direction.NORTH.
+	6) After invoking testRobot.rotateRight().getFacingDirection(), check the ToyRob’s direction equal Direction.EAST.
+	
+	Expected Result:
+	
+	1) expected true.
+	2) expected true.
+	3) expected true.
+	4) expected true.
+	5) expected true.
+	6) expected true.
+
+	Title: Test the place method in ToyRob.java
+	
+	Description: The place method should work correctly.
+	
+	First of all create an instance of new SquareTable ,	
+	 by SquareTable table = new SquareTable(5,5) and create an instance of ToyRobot by
+	 Location  testRobot = new ToyRobot(new Location(0, 0), Direction.NORTH, table);
+	
+	Test Steps:
+	
+	1) Check the ToyRob.getLocation() equal new Location(0,0).
+	2) Check the ToyRob.getFacingDirection() equal Direction.NORTH.
+	3) Invoke the place function like testRobot.place(new Location(4, 5), Direction.SOUTH, table).
+	4) Check ToyRob.getLocation() equal new Location(4, 5).
+	5) After invoking getFacingDirection method , check the direction of ToyRob equal Direction.SOUTH.
+	6) After invoking place method with the parameters location =new Location(-1, 5), Direction d = Direction.SOUTH, table, it will get an error message ‘This should cause a boundary Failure’.
+	7) Check the location of ToyRob is equal new Location(4, 5).
+	8) Check the direction of the ToyRob is equal Direction.SOUTH.
+	9) After invoking place method with the parameters location =new Location(0, -1), Direction d = Direction.SOUTH, table, it will get an error message ‘This should cause a boundary Failure’.
+	10) Check the location of ToyRob is equal new Location(4, 5).
+	11) Check the direction of the ToyRob is equal Direction.SOUTH.
+	12) Create a new SquareTable instance SquareTable table = new SquareTable(6, 6);
+	13) Invoke the place function like testRobot.place(new Location(5, 6), Direction.EAST, table).
+	14) Check the location of ToyRob is equal new Location(5, 6).	
+	15) Check the direction of the ToyRob is equal Direction.EAST.
+	
+	Expected Result:
+	
+	1) expected true
+	2) expected true
+	3) expected true
+	4) expected true
+	5) expected true
+	7) expected true
+	8) expected true
+	9) expected true
+	10) expected true
+	11) expected true
+	13) expected true
+	14) expected true
+	15) expected true
+
+	Title: Test moveForward method
+	
+	Description: Check the moveForward method works correctly.
+	
+	Test Steps:
+	
+	1) Check the direction of ToyRob is equal Direction.NORTH.
+	2) Check the location of ToyRob is equal new Location(0, 0).
+	3) Invoking rotateRight method twice.
+	4) Check the direction of ToyRob is equal Direction.SOUTH.
+	5) Invoking moveForward method, will get command failed with the message ‘This should cause a boundary Failure’.
+	6) Check the location of ToyRob is equal new Location(0, 0).
+	7) Invoking rotateRight method
+	8)  Check the direction of ToyRob is equal Direction.WEST.
+	9) Invoking moveForward method, will get command failed with the message ‘This should cause a boundary Failure’.
+	10) Invoking rotateRight method.
+	11) Check the direction of ToyRob is equal Direction.NORTH.
+	12) Check the location of ToyRob is equal new Location(0, 0).
+	13) Invoking rotateRigth method 5 times
+	14) Check the location of ToyRob is in 0, 5
+	15) Invoking moveForward method, will get command failed with the message ‘This should cause a boundary Failure’.
+	16)  Check the location of ToyRob is in 0, 5
+	17) Invoking rotateRigth method and then invoking moveForward method 4 times.
+	18) Check the location of ToyRob is in 4, 5
+	19 Check the direction of the ToyRob is equal Direction.EAST.
+	
+	Expected Result:
+	
+	1) step 1 expected true
+	2) step 2 expected true
+	3) step 4 expected true
+	4) step 5 expected true
+	5) step 6 expected true
+	6) step 8 expected true
+	7) step 9 expected true
+	8) step 11 expected true
+	9) step 12 expected true
+	10) step 14 expected true 
+	11) step 15 expected true
+	12) step 16  expected true
+	13) step 18 expected true
+	14) step 19 expected true
+	
+
+	Title: Test setFacingDirection method
+	Description: The setFacingDirection method should work as expected
+	Test Steps:
+	1)Initial a Direction instance d with direction is EAST
+	2)Invoking setFacingDirection method by passing Direction instance d
+	3)Invoking getFacingDirection method and check is equal EAST
+	4)Invoking report method and check is equal [0,0] EAST
+	5)Invoking moveForward method and check is equal [1,0] EAST  
+
+	Excepted Result:
+	1) step 3 expected result true.
+	2) step 4 expected result true.
+	3) step 5 expected result true.
+
+	Title: Test getActualDegreesMethod method
+	Description: The getActualDegreesMethod method should work as expected
+	
+	Test Steps:
+	1) Invoking getActualDegrees method by passing integer variable is 360
+	2) Check the return degree is equal 0
+	3) Invoking getActualDegrees method by passing integer variable is 450
+	4) Check the return degree is equal 90
+	5) Invoking getActualDegrees method by passing integer variable is -90
+	6) Check the return degree is equal 270
+
+	Excepted Result:
+	1) step 2 expected result true.
+	2) step 4 expected result true.
+	3) step 6 expected result true.
+
+	Title: Test setLocation method
+	Description: The setLocation method should work as expected
+	
+	Test Steps:
+	1) Initial Location object l with x is 2 and y is 3
+	2) Invoking setLocation method by given new created Location object
+	3) Invoking getLocation function to check the x value is equal 2 and y value equal 3
+
+	Excepted Result:
+	1) step 1 expected result true.
+	2) step 2 expected result true.
+
+	Title: Test setSurface method
+	Description: The setSurface method should work as expected
+	
+	Test Steps:
+	1) Initial SquareTable object surface with max row is 5 and max column is 5
+	2) Invoking setSurface method by given new created SquareTable object
+	3) Invoking getSurface function to check the max column is equal 5 and max row equal 5
+
+	Excepted Result:
+	1) step 1 expected result true.
+	2) step 2 expected result true.
+
+	Title: Test report method
+	
+	Description: The report method should work correctly
+	
+	Test Steps:
+	
+	1) Invoking the report method, check the result equal “[0,0] NORTH”.
+	2) Invoking the place method by passing these parameters new Location(2, 1), Direction.EAST, table, then invoke the
+	report method , check the result equal “[2,1] EAST”.
+	Excepted Result:
+	1) step 1 expected result true.
+	2) step 2 expected result true.
+
+	Title: testExampleA
+	
+	Description: This is a combine command test.
+	
+	Test Steps
+	
+	1) Invoke the place method by passing the parameters new Location(0,0), Direction.NORTH, table, then invoke the moveForward method
+	2) Invoke the report method, equal expected result “[0,1] NORTH”.
+	Excepted Result:
+	At step 2 expected result is true.
+
+	Title: testExampleB
+	
+	Description: This is a combine command test.
+	
+	Test Steps
+	
+	1) Invoke the place method by passing the parameters new Location(0,0), Direction.NORTH, table, then invoke the rotateLeft method
+	2) Invoke the report method, equal expected result “[0,0] WEST”.
+	
+	Excepted Result:
+	
+	At step 2 expected result is true.
+	
+	Title: testExampleC
+	
+	Description: This is a combine command test.
+	
+	Test Steps
+	
+	1) Invoke the place method by passing the parameters new Location(1,2), Direction.EAST, table, then invoke the moveForward method twice then invoke rotateLeft method and then invoke moveForward method.
+	2) Invoke the report method, equal expected result “[3,3] NORTH”.
+	
+	Excepted Result:
+	
+	At step 2 expected result is true.
+	
+	Title: testExampleD
+	
+	Description: This is a combine command test.
+	
+	Test Steps
+	
+	1) Invoke the place method by passing the parameters new Location(3,2), Direction.WEST, table, then invoke the moveForward AND rotateLeft method
+	2) Invoke the report method, equal expected result “[4,2] EAST”.
+	
+	Excepted Result:
+	
+	At step 2 expected result is true.
+	
+	Title: testExampleE
+	
+	Description: This is a combine command test.
+	
+	Test Steps
+	
+	1) Invoke the place method by passing the parameters new Location(2,5), Direction.NORTH, table
+	2) Invoke the report method, equal expected result “[2,5] NORTH”. 
+	3)Check if call moveForward will cause a out of boundary issue.
+	4) Invoke the moveForward method,rotateRight method and report method check output is equal expected result “[3,5] EAST”.
+	5) Invoke the moveForward and report method check output is equal expected result “[4,5] EAST”
+	6) Invoke the rotateRight and report method check output is equal expected result “[4,5] SOUTH”
+	7) Invoke the moveForward method and report method check is equal expected result “[4,4] SOUTH”
+	8) Invoke rotateRight method twice and then call moveForward method check it will cause a out of boundary issue or not
+	
+	Excepted Result:
+	
+	At step 2 expected result is true.
+	At step 3 expected result is will case a out of boundary issue.
+	At step 4 expected result is true.	
+	At step 5,6,7,8 expected result is true.	
+
+	
